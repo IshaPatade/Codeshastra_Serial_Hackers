@@ -11,10 +11,11 @@ import managementRoutes from "./routes/management.js";
 import salesRoutes from "./routes/sales.js";
 import Razorpay from "razorpay"
 import crypto from "crypto";
+import jobRoutes from "./routes/jobroute.js"
 // data imports
 import User from "./models/User.js";
 import Product from "./models/Product.js";
-import ProductStat from "./models/ProductStat.js";
+import ProductStat from "./models/ProductStat.js"
 import Transaction from "./models/Transaction.js";
 import OverallStat from "./models/OverallStat.js";
 import AffiliateStat from "./models/AffiliateStat.js";
@@ -46,6 +47,7 @@ app.use("/client", clientRoutes);
 app.use("/general", generalRoutes);
 app.use("/management", managementRoutes);
 app.use("/sales", salesRoutes);
+app.use("/job", jobRoutes);
 
 app.post("/order", async (req, res) => {
   try {

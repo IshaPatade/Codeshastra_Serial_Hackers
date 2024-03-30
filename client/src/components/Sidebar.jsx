@@ -57,10 +57,10 @@ const navItems = [
     text: "Resume",
     icon: <Description/>,
   },
-  {
-    text: "Sales",
-    icon: null,
-  },
+  // {
+  //   text: "Sales",
+  //   icon: null,
+  // },
   {
     text: "Code",
     icon: <Code />,

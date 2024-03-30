@@ -19,6 +19,7 @@ import Admin from "scenes/admin";
 import Performance from "scenes/performance";
 import Form from "components/Form";
 import VideoCall from "components/VidoeCall";
+import Editor from "scenes/editor/Editor";
 
 import AuthForm from "./pages/Auth/AuthForm";
 
@@ -32,6 +33,8 @@ import RoomPage from "components/RoomPage";
 import Dashboard2 from "scenes/dashboard/Dashboard_farm";
 import Calendar from "components/Calendar";
 import Jobs from "scenes/jobs";
+import Courses from "scenes/courses/Courses";
+import { EditRoadOutlined } from "@mui/icons-material";
 function App() {
   const { user } = useAuthContext();
   const mode = useSelector((state) => state.global.mode);
@@ -55,7 +58,7 @@ function App() {
               {/* <Route path="/" element={<Navigate to="/dashboard" replace />} />  */}
               <Route path="/dashboard" element={<Dashboard2 />} />
               <Route path="/dashboard_admin" element={<Dashboard_admin />} />
-              <Route path="/dashboard_user" element={<Dashboard_user />} />
+              {/* <Route path="/dashboard_user" element={<Dashboard_user />} /> */}
               <Route path="/payment" element={<Payment />} />
               <Route path="/farmerform" element={<FarmerForm />} />
               <Route path="/products" element={<Products />} />
@@ -71,6 +74,8 @@ function App() {
               <Route path="/performance" element={<Performance />} />
               <Route path="/form" element={<Form />} />
               <Route path="/news" element={<News />} />
+              <Route path="/courses" element={<Courses />} />
+              <Route path="/editor" element={<Editor />} />
             </Route>
           </Routes>
         </ThemeProvider>
