@@ -23,13 +23,13 @@ const MainPage = (props) => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <AppBar position="static" style={{backgroundColor: "#002D62", borderRadius: "10px"}}>
+      {/* <AppBar position="static" style={{backgroundColor: "#002D62", borderRadius: "10px"}}> */}
         <Toolbar>
           <Typography variant="h6" className={classes.title}>
             RESUME GENERATOR
           </Typography>
         </Toolbar>
-      </AppBar>
+      {/* </AppBar> */}
       <Form />
     </div>
   );

@@ -63,7 +63,7 @@ function App() {
               <Route path="/discuss" element={<Transactions />} />
               <Route path="/resume" element={<Geography />} />
               <Route path="/overview" element={<Overview />} />
-              <Route path="/daily" element={<Daily />} />
+              <Route path="/code" element={<Daily />} />
               <Route path="/monthly" element={<Monthly />} />
               <Route path="/breakdown" element={<Breakdown />} />
               <Route path="/admin" element={<Admin />} />

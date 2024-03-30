@@ -30,7 +30,7 @@ import {
   CalendarMonthOutlined,
   AdminPanelSettingsOutlined,
   TrendingUpOutlined,Groups,
-  PieChartOutlined,WorkOutline,Description
+  PieChartOutlined,WorkOutline,Description, Code, CalendarToday,School
 } from "@mui/icons-material";
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
 
@@ -62,16 +62,16 @@ const navItems = [
     icon: null,
   },
   {
-    text: "Overview",
-    icon: <PointOfSaleOutlined />,
-  },
-  {
-    text: "Daily",
-    icon: <TodayOutlined />,
+    text: "Code",
+    icon: <Code />,
   },
   {
     text: "Calendar",
-    icon: <TodayOutlined />,
+    icon: <CalendarToday />,
+  },
+  {
+    text: "Courses",
+    icon: <School/>,
   },
   // {
   //   text: "Monthly",
