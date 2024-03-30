@@ -31,6 +31,7 @@ import News from "components/News";
 import RoomPage from "components/RoomPage";
 import Dashboard2 from "scenes/dashboard/Dashboard_farm";
 import Calendar from "components/Calendar";
+import Jobs from "scenes/jobs";
 function App() {
   const { user } = useAuthContext();
   const mode = useSelector((state) => state.global.mode);
@@ -58,7 +59,7 @@ function App() {
               <Route path="/payment" element={<Payment />} />
               <Route path="/farmerform" element={<FarmerForm />} />
               <Route path="/products" element={<Products />} />
-              <Route path="/apply" element={<Customers />} />
+              <Route path="/apply" element={<Jobs />} />
               <Route path="/calendar" element={<Calendar />} />
               <Route path="/discuss" element={<Transactions />} />
               <Route path="/resume" element={<Geography />} />
