@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './form.css'
-const { GoogleGenerativeAI } = require("@google/generative-ai");
+// const { GoogleGenerativeAI } = require("@google/generative-ai");
 
 const Form = () => {
     const [formData, setFormData] = useState({
-        name: '',
-        age: '',
+        companyname: '',
+        role: '',
         location: '',
-        landOwnership: '',
-        incomeSources: '',
-        savings: ''
+        skills: '',
+        job_desc: '',
+        job_type: ''
     });
     
     const [analysisResult, setAnalysisResult] = useState(null);
@@ -20,36 +20,38 @@ const Form = () => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const API_KEY = "AIzaSyCwHHCLAEInXJrGE1ZS1XsWhLz4L4yUMkw"; // Replace with your Google Generative AI API key
-    const genAI = new GoogleGenerativeAI(API_KEY);
+    // const API_KEY = "AIzaSyCwHHCLAEInXJrGE1ZS1XsWhLz4L4yUMkw"; // Replace with your Google Generative AI API key
+    // const genAI = new GoogleGenerativeAI(API_KEY);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         
-        const model = genAI.getGenerativeModel({ model: "gemini-pro" });
-        const result = await model.generateContent(prompt);
-        const text = result.response.text();
-        setAnalysisResult(text);
+        // API Call to post JOB
+        
+        // const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+        // const result = await model.generateContent(prompt);
+        // const text = result.response.text();
+        // setAnalysisResult(text);
     };
 
     return (
         <div className='formDiv'>
             <form onSubmit={handleSubmit} className='formContainer'>
                 <label>
-                    Name:
+                    Company Name:
                     <input
                         type="text"
                         name="name"
-                        value={formData.name}
+                        value={formData.companyname}
                         onChange={handleChange}
                     />
                 </label>
                 <label>
-                    Age:
+                    Role:
                     <input
-                        type="number"
-                        name="age"
-                        value={formData.age}
+                        type="text"
+                        name="role"
+                        value={formData.role}
                         onChange={handleChange}
                     />
                 </label>
@@ -63,29 +65,30 @@ const Form = () => {
                     />
                 </label>
                 <label>
-                    Land Ownership:
+                Skills:
                     <input
+                        placeholder='Java, SQL'
                         type="text"
-                        name="landOwnership"
-                        value={formData.landOwnership}
+                        name="skills"
+                        value={formData.skills}
                         onChange={handleChange}
                     />
                 </label>
                 <label>
-                    Income Sources:
+                    Job Description:
                     <input
                         type="text"
-                        name="incomeSources"
-                        value={formData.incomeSources}
+                        name="job_desc"
+                        value={formData.job_desc}
                         onChange={handleChange}
                     />
                 </label>
                 <label>
-                    Savings:
+                    Job Type:
                     <input
-                        type="number"
-                        name="savings"
-                        value={formData.savings}
+                        type="text"
+                        name="job_type"
+                        value={formData.job_type}
                         onChange={handleChange}
                     />
                 </label>
@@ -94,12 +97,12 @@ const Form = () => {
                 </div>
             </form>
 
-            {analysisResult && (
+            {/* {analysisResult && (
                 <div>
                     <h2>Analysis Result:</h2>
                     <p>{analysisResult}</p>
                 </div>
-            )}
+            )} */}
         </div>
     );
 };
