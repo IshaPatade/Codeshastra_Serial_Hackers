@@ -6,7 +6,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import Form from "./Form/index.js";
-
+import "../App.css"
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1
@@ -24,7 +24,7 @@ const MainPage = (props) => {
   return (
     <div className={classes.root}>
       {/* <AppBar position="static" style={{backgroundColor: "#002D62", borderRadius: "10px"}}> */}
-        <Toolbar>
+        <Toolbar className="header">
           <Typography variant="h6" className={classes.title}>
             RESUME GENERATOR
           </Typography>

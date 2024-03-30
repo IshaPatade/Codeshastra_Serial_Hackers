@@ -72,7 +72,7 @@ const ProfileForm = (props) => {
                 label="First Name"
                 onChange={handleChange}
                 variant="outlined"
-               
+                multiline={2}
               />
             </Grid>
 
@@ -84,6 +84,7 @@ const ProfileForm = (props) => {
                 label="Last Name"
                 onChange={handleChange}
                 variant="outlined"
+                multiline={2}
               />
             </Grid>
 
@@ -96,6 +97,7 @@ const ProfileForm = (props) => {
                 label="Phone Number"
                 onChange={handleChange}
                 variant="outlined"
+                multiline={2}
               />
             </Grid>
 
@@ -107,6 +109,7 @@ const ProfileForm = (props) => {
                 label="Address"
                 onChange={handleChange}
                 variant="outlined"
+                multiline={2}
               />
             </Grid>
             <Grid item md={6} xs={12}>

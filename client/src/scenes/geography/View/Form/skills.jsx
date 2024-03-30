@@ -78,7 +78,7 @@ const AddSkill = () => {
             <TextField
               required
               fullWidth
-              name={`skill`}
+              name={'skill'}
               defaultValue={props.SkillsFormData.Data && props.SkillsFormData.Data[i] ? props.SkillsFormData.Data[i] : ""}
               label="Skill"
               onChange={handleChange(i)}
@@ -86,6 +86,7 @@ const AddSkill = () => {
               formControlProps={{
                 fullWidth: true
               }}
+              multiline={2}
             />
         </Grid>
         <Divider />

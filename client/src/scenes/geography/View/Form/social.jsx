@@ -78,7 +78,7 @@ const AddSocial = () => {
             <TextField
               required
               fullWidth
-              name={`Social`}
+              name={'Social'}
               defaultValue={props.SocialFormData.Data && props.SocialFormData.Data[i] ? props.SocialFormData.Data[i] : ""}
               label="Social Links"
               onChange={handleChange(i)}
@@ -86,6 +86,7 @@ const AddSocial = () => {
               formControlProps={{
                 fullWidth: true
               }}
+              multiline={2}
             />
         </Grid>
         </Grid>
