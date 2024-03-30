@@ -46,8 +46,8 @@ const JobCard = ({ job }) => {
     return (
         <Card sx={{ width: '30%', mb: 3, mt: 3, fontFamily: 'Merriweather', padding: '1.5%'}}>
             <CardContent >
-                <Typography sx={{ fontSize: 20,  fontWeight: 500 }} gutterBottom>
-                    <LocationOnIcon sx={{  fontSize: 18 }} />
+                <Typography sx={{ fontSize: 15,  fontWeight: 500 }} gutterBottom>
+                    <LocationOnIcon sx={{  fontSize: 15 }} />
                      {location}
                 </Typography>
                 <Typography sx={{textAlign: 'center', fontSize: 20,  fontWeight: 500}} textAlign='center' gutterBottom>
@@ -59,8 +59,11 @@ const JobCard = ({ job }) => {
                 <Typography sx={{ mb: 1.5 }} color="text.secondary">
                     {job.job_type}
                 </Typography>
+                <Typography sx={{ fontSize: 15, mt:3, fontWeight: 500 }} component="div">
+                    <span style={{fontWeight: "bold"}}>Company Name : </span> {job.company.length > 0 ? job.company : 'NA'}
+                </Typography>
                 {/* Display formatted description */}
-                <Typography sx={{ fontSize: 15, fontWeight: 500 }} component="div">
+                <Typography sx={{ fontSize: 15, mt:3, fontWeight: 500 }} component="div">                 
                     {formattedDescription}<span style={{color: 'grey', fontSize: '12px', cursor: 'pointer'}}> .... Read More</span>
                 </Typography>
 
