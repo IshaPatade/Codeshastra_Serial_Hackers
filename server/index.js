@@ -11,6 +11,7 @@ import managementRoutes from "./routes/management.js";
 import salesRoutes from "./routes/sales.js";
 import Razorpay from "razorpay"
 import crypto from "crypto";
+import chatRoutes from "./routes/chat.js"
 // data imports
 import User from "./models/User.js";
 import Product from "./models/Product.js";
@@ -46,6 +47,7 @@ app.use("/client", clientRoutes);
 app.use("/general", generalRoutes);
 app.use("/management", managementRoutes);
 app.use("/sales", salesRoutes);
+app.use("/api/chat", chatRoutes)
 
 app.post("/order", async (req, res) => {
   try {

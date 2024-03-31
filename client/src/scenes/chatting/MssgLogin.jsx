@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import login from ".././assets/login_bg.png";
-import axios from "../axios";
+// import login from ".././assets/login_bg.png";
+// import axios from "../axios";
+import axios from "axios";
 
 const MssgLogin = (props) => {
   // const navigate = useNavigate();
@@ -9,7 +10,7 @@ const MssgLogin = (props) => {
   const SubmitHandler = async (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:8000/api/chat/login", { username, secret })
+      .post("http://localhost:4000/api/chat/login", { username, secret })
       .then((r) => props.onAuth({ ...r.data, secret })) // NOTE: over-ride secret
       .catch((e) => console.log(JSON.stringify(e.response.data)));
   };
@@ -18,7 +19,8 @@ const MssgLogin = (props) => {
     <div className="">
       <form onSubmit={SubmitHandler}>
         <div
-          style={{ backgroundImage: `url(${login})`, backgroundSize: "cover" }}
+          // style={{ backgroundImage: `url(${login})`, backgroundSize: "cover" }}
+          // style={{ backgroundImage: `url(${login})`, backgroundSize: "cover" }}
           className="font-libre h-[90vh] text-gray-900 flex justify-center"
         >
           <div className=" sm:m-10 pb-10 rounded-3xl">

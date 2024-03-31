@@ -32,6 +32,7 @@ import RoomPage from "components/RoomPage";
 import Dashboard2 from "scenes/dashboard/Dashboard_farm";
 import Calendar from "components/Calendar";
 import Jobs from "scenes/jobs";
+import Candidates from "scenes/viewCandidates/Candidates";
 function App() {
   const { user } = useAuthContext();
   const mode = useSelector((state) => state.global.mode);
@@ -71,6 +72,7 @@ function App() {
               <Route path="/performance" element={<Performance />} />
               <Route path="/form" element={<Form />} />
               <Route path="/news" element={<News />} />
+              <Route path="/candidates" element={<Candidates />} />
             </Route>
           </Routes>
         </ThemeProvider>
