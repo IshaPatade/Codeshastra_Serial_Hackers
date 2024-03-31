@@ -19,6 +19,8 @@ import Admin from "scenes/admin";
 import Performance from "scenes/performance";
 import Form from "components/Form";
 import VideoCall from "components/VidoeCall";
+import Editor from "scenes/editor/Editor";
+import Python from "scenes/python/Python"
 
 import AuthForm from "./pages/Auth/AuthForm";
 
@@ -32,6 +34,11 @@ import RoomPage from "components/RoomPage";
 import Dashboard2 from "scenes/dashboard/Dashboard_farm";
 import Calendar from "components/Calendar";
 import Jobs from "scenes/jobs";
+import Courses from "scenes/courses/Courses";
+import { EditRoadOutlined } from "@mui/icons-material";
+import Apply from "scenes/apply/Apply";
+import ApplyDetails from "scenes/apply/ApplyDetails";
+
 import Candidates from "scenes/viewCandidates/Candidates";
 function App() {
   const { user } = useAuthContext();
@@ -56,22 +63,27 @@ function App() {
               {/* <Route path="/" element={<Navigate to="/dashboard" replace />} />  */}
               <Route path="/dashboard" element={<Dashboard2 />} />
               <Route path="/dashboard_admin" element={<Dashboard_admin />} />
-              <Route path="/dashboard_user" element={<Dashboard_user />} />
+              {/* <Route path="/dashboard_user" element={<Dashboard_user />} /> */}
               <Route path="/payment" element={<Payment />} />
               <Route path="/farmerform" element={<FarmerForm />} />
               <Route path="/products" element={<Products />} />
-              <Route path="/apply" element={<Jobs />} />
+              <Route path="/jobs" element={<Jobs />} />
+              <Route path="/apply" element={<Apply />} />
+              <Route path="/applydetails/:id" element={<ApplyDetails />} />
               <Route path="/calendar" element={<Calendar />} />
               <Route path="/discuss" element={<Transactions />} />
               <Route path="/resume" element={<Geography />} />
               <Route path="/overview" element={<Overview />} />
-              <Route path="/code" element={<Daily />} />
+              <Route path="/code" element={<Editor />} />
               <Route path="/monthly" element={<Monthly />} />
               <Route path="/breakdown" element={<Breakdown />} />
               <Route path="/admin" element={<Admin />} />
               <Route path="/performance" element={<Performance />} />
               <Route path="/form" element={<Form />} />
               <Route path="/news" element={<News />} />
+              <Route path="/courses" element={<Courses />} />
+              <Route path="/editor" element={<Editor />} />
+              <Route path="/python" element={<Python />} />
               <Route path="/candidates" element={<Candidates />} />
             </Route>
           </Routes>

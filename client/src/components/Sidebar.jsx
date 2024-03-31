@@ -50,6 +50,10 @@ const navItems = [
     icon: <WorkOutline />,
   },
   {
+    text: "Jobs",
+    icon: <WorkOutline />,
+  },
+  {
     text: "Discuss",
     icon: <Groups />,
   },
@@ -57,10 +61,10 @@ const navItems = [
     text: "Resume",
     icon: <Description/>,
   },
-  {
-    text: "Sales",
-    icon: null,
-  },
+  // {
+  //   text: "Sales",
+  //   icon: null,
+  // },
   {
     text: "Code",
     icon: <Code />,

@@ -11,11 +11,13 @@ import managementRoutes from "./routes/management.js";
 import salesRoutes from "./routes/sales.js";
 import Razorpay from "razorpay"
 import crypto from "crypto";
+import jobRoutes from "./routes/jobroute.js"
+import Axios from "axios"
 import chatRoutes from "./routes/chat.js"
 // data imports
 import User from "./models/User.js";
 import Product from "./models/Product.js";
-import ProductStat from "./models/ProductStat.js";
+import ProductStat from "./models/ProductStat.js"
 import Transaction from "./models/Transaction.js";
 import OverallStat from "./models/OverallStat.js";
 import AffiliateStat from "./models/AffiliateStat.js";
@@ -38,6 +40,7 @@ app.use(morgan("common"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
+// const Axios = require("axios");
 
 import userRoutes from "./routes/user.js";
 app.use("/api/user", userRoutes);
@@ -47,6 +50,42 @@ app.use("/client", clientRoutes);
 app.use("/general", generalRoutes);
 app.use("/management", managementRoutes);
 app.use("/sales", salesRoutes);
+app.use("/job", jobRoutes);
+
+
+app.post("/compile", (req, res) => { 
+  //getting the required data from the request 
+  let code = req.body.code; 
+  let language = req.body.language; 
+  let input = req.body.input; 
+
+  if (language === "python") { 
+      language = "py"
+  } 
+
+  let data = ({ 
+      "code": code, 
+      "language": language, 
+      "input": input 
+  }); 
+  let config = { 
+      method: 'post', 
+      url: 'https://codexweb.netlify.app/.netlify/functions/enforceCode', 
+      headers: { 
+          'Content-Type': 'application/json'
+      }, 
+      data: data 
+  }; 
+  //calling the code compilation API 
+  Axios(config) 
+      .then((response) => { 
+          res.send(response.data) 
+          console.log(response.data) 
+      }).catch((error) => { 
+          console.log(error); 
+      }); 
+}) 
+
 app.use("/api/chat", chatRoutes)
 
 app.post("/order", async (req, res) => {
