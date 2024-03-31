@@ -30,7 +30,7 @@ import {
   CalendarMonthOutlined,
   AdminPanelSettingsOutlined,
   TrendingUpOutlined,Groups,
-  PieChartOutlined,WorkOutline,Description, Code, CalendarToday,School
+  PieChartOutlined,WorkOutline,Description, Code, CalendarToday,School, Person, Receipt, Chat
 } from "@mui/icons-material";
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
 
@@ -45,52 +45,52 @@ const navItems = [
   //   text: "Products",
   //   icon: <ShoppingCartOutlined />,
   // },
-  {
-    text: "Apply",
-    icon: <WorkOutline />,
-    role: "user"
-  },
-  {
-    text: "Jobs",
-    icon: <WorkOutline />,
-    role: "user"
-  },
-  {
-    text: "Discuss",
-    icon: <Groups />,
-    role: "user"
-  },
-  {
-    text: "Resume",
-    icon: <Description/>,
-    role: "user"
-  },
+  // {
+  //   text: "Apply",
+  //   icon: <WorkOutline />,
+  //   role: "user"
+  // },
+  // {
+  //   text: "Jobs",
+  //   icon: <WorkOutline />,
+  //   role: "user"
+  // },
+  // {
+  //   text: "Discuss",
+  //   icon: <Groups />,
+  //   role: "user"
+  // },
+  // {
+  //   text: "Resume",
+  //   icon: <Description/>,
+  //   role: "user"
+  // },
   // {
   //   text: "Sales",
   //   icon: null,
   // },
-  {
-    text: "Code",
-    icon: <Code />,
-    role: "user"
-  },
+  // {
+  //   text: "Code",
+  //   icon: <Code />,
+  //   role: "user"
+  // },
   {
     text: "Calendar",
     icon: <CalendarToday />,
   },
   {
-    text: "Courses",
-    icon: <School/>,
+    text: "Form",
+    icon: <Receipt/>,
     role: "user"
   },
-  // {
-  //   text: "Monthly",
-  //   icon: <CalendarMonthOutlined />,
-  // },
-  // {
-  //   text: "Breakdown",
-  //   icon: <PieChartOutlined />,
-  // },
+  {
+    text: "Candidates",
+    icon: <Person />,
+  },
+  {
+    text: "ChatAdmin",
+    icon: <Chat />,
+  },
   // {
   //   text: "Management",
   //   icon: null,
@@ -105,7 +105,7 @@ const navItems = [
   // },
 ];
 
-const Sidebar = ({
+const SidebarAdmin = ({
   user,
   drawerWidth,
   isSidebarOpen,
@@ -317,10 +317,10 @@ const Sidebar = ({
                       color: theme.palette.secondary[200],
                     }}
                   >
-                    <CurrencyRupeeIcon />
+                    {/* <CurrencyRupeeIcon /> */}
                   </ListItemIcon>
                   {/* {isNonMobile && <ListItemText primary="Pay" />}  */}
-                  <ListItemText primary="Pay" />
+                  {/* <ListItemText primary="Pay" /> */}
                   {/* <ChevronRightOutlined sx={{ ml: "auto" }} /> */}
                 </ListItemButton>
               </ListItem>
@@ -333,4 +333,4 @@ const Sidebar = ({
   );
 };
 
-export default Sidebar;
+export default SidebarAdmin;

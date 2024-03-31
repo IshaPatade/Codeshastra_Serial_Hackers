@@ -1,3 +1,62 @@
+// import React from 'react'
+// import StreakCalendar from './Calendar2'
+
+// const Calendar2 = () => {
+//   return (
+//     <div className="container mx-auto mt-5">
+//         <h1 className="text-3xl font-bold mb-5">My Streak Calendar</h1>
+//         <StreakCalendar startDate="2024-03-01" streakLength={31} />
+//  </div>
+//   )
+// }
+
+// export default Calendar2
+
+
+// import React, { useState } from 'react';
+// import Calendar from 'react-calendar';
+// import 'react-calendar/dist/Calendar.css';
+
+// const BreakdownChart = () => {
+//   const [date, setDate] = useState(new Date());
+//   const [highlightedDates, setHighlightedDates] = useState([
+//     // Add your dates here that you want to highlight (in Date object format)
+//     new Date(2024, 3, 10),
+//     new Date(2024, 3, 15),
+//     new Date(2024, 3, 20),
+//   ]);
+
+//   const tileContent = ({ date }) => {
+//     // Check if the current date is in the highlightedDates array
+//     const isHighlighted = highlightedDates.find(
+//       (highlightedDate) =>
+//         highlightedDate.getDate() === date.getDate() &&
+//         highlightedDate.getMonth() === date.getMonth() &&
+//         highlightedDate.getFullYear() === date.getFullYear()
+//     );
+
+//     // If the date is highlighted, render a green dot
+//     return isHighlighted ? <div style={{ backgroundColor: 'green', width: '100%', height: '100%', color: 'black' }}></div> : null;
+//   };
+
+//   const onChange = (date) => {
+//     setDate(date);
+//   };
+
+//   return (
+//     <div>
+//       <Calendar
+//         onChange={onChange}
+//         value={date}
+//         tileContent={tileContent}
+//         style={{height:'150%',width:'150%',color:"black"}}
+//       />
+//     </div>
+//   );
+// };
+
+// export default BreakdownChart;
+
 import React, { useMemo, useState } from "react";
 import { ResponsivePie } from "@nivo/pie";
 import { useTheme, MenuItem, Select } from "@mui/material";
@@ -24,7 +83,7 @@ const BreakdownChart = ({ data2 }) => {
       if (item.Commodity === commodity) {
         total += item.arrivals_in_qtl;
       }
-      return total;
+      return total%20;
     }, 0);
   };
 
@@ -32,15 +91,12 @@ const BreakdownChart = ({ data2 }) => {
     if (!filteredData) return [];
 
     const commodities = [
-      "Bajri",
-      "Maize",
-      "Matki",
-      "Black Gram",
-      "Soybean",
-      "Lemon",
-      "Potato",
-      "Flower",
-      "Carrot",
+      "Business",
+      "Developer",
+      "Data Analyst",
+      "Data Scientist",
+      "Software Engineer",
+      
     ];
 
     const pieData = commodities.map((commodity) => ({
@@ -56,7 +112,7 @@ const BreakdownChart = ({ data2 }) => {
 
   return (
     <>
-      <Select
+      {/* <Select
         value={selectedYear}
         onChange={handleYearChange}
         displayEmpty
@@ -66,7 +122,7 @@ const BreakdownChart = ({ data2 }) => {
         <MenuItem value={2016}>2016</MenuItem>
 
         {/* Add other years as needed */}
-      </Select>
+      {/* </Select> */} 
       {/* <ResponsivePie
         data={pieChartData}
         margin={{ top: 40, right: 80, bottom: 80, left: 80 }}

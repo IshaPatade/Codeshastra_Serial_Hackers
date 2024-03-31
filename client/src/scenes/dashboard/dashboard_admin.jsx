@@ -6,7 +6,7 @@ import {
   Email,
   PointOfSale,
   PersonAdd,
-  Traffic,
+  Traffic,WorkHistory,TrendingUp
 } from "@mui/icons-material";
 import {
   Box,
@@ -41,274 +41,17 @@ const Dashboard = () => {
   const API_KEY = "AIzaSyCwHHCLAEInXJrGE1ZS1XsWhLz4L4yUMkw"
   useEffect(() => {
     // Initialize Gemini and make prediction
-    const runGemini = async () => {
-      const genAI = new GoogleGenerativeAI(API_KEY);
-      const model = genAI.getGenerativeModel({ model: "gemini-pro" });
-      const prompt = "Predict the most profitable commodity to grow based on the given data, just give output as crop name, its okk if you give a rough answer, you can calculate which commodity had the most max_price and display that"
-      const data = [ {
-        "APMC": "Ahmednagar",
-        "Commodity": "Bajri",
-        "Year": 2015,
-        "Month": "April",
-        "arrivals_in_qtl": 79,
-        "min_price": 1406,
-        "max_price": 1538,
-        "modal_price": 1463,
-        "date": "2015-04",
-        "district_name": "Ahmadnagar",
-        "state_name": "Maharashtra"
-      },
-      {
-        "APMC": "Ahmednagar",
-        "Commodity": "Bajri",
-        "Year": 2016,
-        "Month": "April",
-        "arrivals_in_qtl": 106,
-        "min_price": 1788,
-        "max_price": 1925,
-        "modal_price": 1875,
-        "date": "2016-04",
-        "district_name": "Ahmadnagar",
-        "state_name": "Maharashtra"
-      },
-      {
-        "APMC": "Ahmednagar",
-        "Commodity": "Wheat(Husked)",
-        "Year": 2015,
-        "Month": "April",
-        "arrivals_in_qtl": 1253,
-        "min_price": 1572,
-        "max_price": 1890,
-        "modal_price": 1731,
-        "date": "2015-04",
-        "district_name": "Ahmadnagar",
-        "state_name": "Maharashtra"
-      },
-      {
-        "APMC": "Ahmednagar",
-        "Commodity": "Wheat(Husked)",
-        "Year": 2016,
-        "Month": "April",
-        "arrivals_in_qtl": 387,
-        "min_price": 1750,
-        "max_price": 2220,
-        "modal_price": 1999,
-        "date": "2016-04",
-        "district_name": "Ahmadnagar",
-        "state_name": "Maharashtra"
-      },
-      {
-        "APMC": "Ahmednagar",
-        "Commodity": "Sorgum(Jawar)",
-        "Year": 2015,
-        "Month": "April",
-        "arrivals_in_qtl": 3825,
-        "min_price": 1600,
-        "max_price": 2200,
-        "modal_price": 1900,
-        "date": "2015-04",
-        "district_name": "Ahmadnagar",
-        "state_name": "Maharashtra"
-      },
-      {
-        "APMC": "Ahmednagar",
-        "Commodity": "Sorgum(Jawar)",
-        "Year": 2016,
-        "Month": "April",
-        "arrivals_in_qtl": 2093,
-        "min_price": 1695,
-        "max_price": 2454,
-        "modal_price": 2119,
-        "date": "2016-04",
-        "district_name": "Ahmadnagar",
-        "state_name": "Maharashtra"
-      },
-      {
-        "APMC": "Ahmednagar",
-        "Commodity": "Maize",
-        "Year": 2015,
-        "Month": "April",
-        "arrivals_in_qtl": 75,
-        "min_price": 1345,
-        "max_price": 1401,
-        "modal_price": 1373,
-        "date": "2015-04",
-        "district_name": "Ahmadnagar",
-        "state_name": "Maharashtra"
-      },
-      {
-        "APMC": "Ahmednagar",
-        "Commodity": "Maize",
-        "Year": 2016,
-        "Month": "April",
-        "arrivals_in_qtl": 155,
-        "min_price": 1367,
-        "max_price": 1392,
-        "modal_price": 1375,
-        "date": "2016-04",
-        "district_name": "Ahmadnagar",
-        "state_name": "Maharashtra"
-      },
-      {
-        "APMC": "Ahmednagar",
-        "Commodity": "Gram",
-        "Year": 2015,
-        "Month": "April",
-        "arrivals_in_qtl": 1794,
-        "min_price": 3533,
-        "max_price": 3762,
-        "modal_price": 3647,
-        "date": "2015-04",
-        "district_name": "Ahmadnagar",
-        "state_name": "Maharashtra"
-      },
-      {
-        "APMC": "Ahmednagar",
-        "Commodity": "Gram",
-        "Year": 2016,
-        "Month": "April",
-        "arrivals_in_qtl": 630,
-        "min_price": 4790,
-        "max_price": 5553,
-        "modal_price": 5216,
-        "date": "2016-04",
-        "district_name": "Ahmadnagar",
-        "state_name": "Maharashtra"
-      },
-      {
-        "APMC": "Ahmednagar",
-        "Commodity": "Horse Gram",
-        "Year": 2015,
-        "Month": "April",
-        "arrivals_in_qtl": 3,
-        "min_price": 7150,
-        "max_price": 7150,
-        "modal_price": 7150,
-        "date": "2015-04",
-        "district_name": "Ahmadnagar",
-        "state_name": "Maharashtra"
-      },
-      {
-        "APMC": "Ahmednagar",
-        "Commodity": "Matki",
-        "Year": 2015,
-        "Month": "April",
-        "arrivals_in_qtl": 1,
-        "min_price": 7500,
-        "max_price": 7500,
-        "modal_price": 7500,
-        "date": "2015-04",
-        "district_name": "Ahmadnagar",
-        "state_name": "Maharashtra"
-      },
-      {
-        "APMC": "Ahmednagar",
-        "Commodity": "Pigeon Pea (Tur)",
-        "Year": 2015,
-        "Month": "April",
-        "arrivals_in_qtl": 144,
-        "min_price": 4993,
-        "max_price": 5373,
-        "modal_price": 5233,
-        "date": "2015-04",
-        "district_name": "Ahmadnagar",
-        "state_name": "Maharashtra"
-      },
-      {
-        "APMC": "Ahmednagar",
-        "Commodity": "Pigeon Pea (Tur)",
-        "Year": 2016,
-        "Month": "April",
-        "arrivals_in_qtl": 33,
-        "min_price": 6900,
-        "max_price": 7700,
-        "modal_price": 7329,
-        "date": "2016-04",
-        "district_name": "Ahmadnagar",
-        "state_name": "Maharashtra"
-      },
-      {
-        "APMC": "Ahmednagar",
-        "Commodity": "Black Gram",
-        "Year": 2015,
-        "Month": "April",
-        "arrivals_in_qtl": 7,
-        "min_price": 5700,
-        "max_price": 5700,
-        "modal_price": 5700,
-        "date": "2015-04",
-        "district_name": "Ahmadnagar",
-        "state_name": "Maharashtra"
-      },
-      {
-        "APMC": "Ahmednagar",
-        "Commodity": "Black Gram",
-        "Year": 2016,
-        "Month": "April",
-        "arrivals_in_qtl": 2,
-        "min_price": 7500,
-        "max_price": 7500,
-        "modal_price": 7500,
-        "date": "2016-04",
-        "district_name": "Ahmadnagar",
-        "state_name": "Maharashtra"
-      },
-      {
-        "APMC": "Ahmednagar",
-        "Commodity": "Castor Seed",
-        "Year": 2015,
-        "Month": "April",
-        "arrivals_in_qtl": 3,
-        "min_price": 3313,
-        "max_price": 3313,
-        "modal_price": 3313,
-        "date": "2015-04",
-        "district_name": "Ahmadnagar",
-        "state_name": "Maharashtra"
-      },
-      {
-        "APMC": "Ahmednagar",
-        "Commodity": "Soybean",
-        "Year": 2015,
-        "Month": "April",
-        "arrivals_in_qtl": 12,
-        "min_price": 2900,
-        "max_price": 3400,
-        "modal_price": 3150,
-        "date": "2015-04",
-        "district_name": "Ahmadnagar",
-        "state_name": "Maharashtra"
-      },
-      {
-        "APMC": "Ahmednagar",
-        "Commodity": "Soybean",
-        "Year": 2016,
-        "Month": "April",
-        "arrivals_in_qtl": 20,
-        "min_price": 2200,
-        "max_price": 3900,
-        "modal_price": 3603,
-        "date": "2016-04",
-        "district_name": "Ahmadnagar",
-        "state_name": "Maharashtra"
-      },];
-
-       // Prompt for Gemini
-      const result = await model.generateContent(prompt);
-      const response = await result.response;
-      const text = await response.text();
-      setCropPrediction(text);
-    };
+   
 
     // runGemini();
   }, []);
 
   const columns = [
-    {
-      field: "_id",
-      headerName: "ID",
-      flex: 1,
-    },
+    // {
+    //   field: "_id",
+    //   headerName: "ID",
+    //   flex: 1,
+    // },
     {
       field: "userId",
       headerName: "User ID",
@@ -316,22 +59,22 @@ const Dashboard = () => {
     },
     {
       field: "createdAt",
-      headerName: "CreatedAt",
+      headerName: "Applied at",
       flex: 1,
     },
     {
       field: "products",
-      headerName: "# of Products",
+      headerName: "Rank",
       flex: 0.5,
       sortable: false,
       renderCell: (params) => params.value.length,
     },
-    {
-      field: "cost",
-      headerName: "Cost",
-      flex: 1,
-      renderCell: (params) => `$${Number(params.value).toFixed(2)}`,
-    },
+    // {
+    //   field: "cost",
+    //   headerName: "Cost",
+    //   flex: 1,
+    //   renderCell: (params) => `$${Number(params.value).toFixed(2)}`,
+    // },
   ];
 
   return (
@@ -382,15 +125,15 @@ const Dashboard = () => {
             }
           /> */}
           <StatBox
-            title="Crop Prediction"
-            value={cropPrediction}
+            title="Jobs Posted"
+            value={7}
             increase="" // If applicable
-            description="Most profitable crop to grow"
-            icon={<Traffic sx={{ color: theme.palette.secondary[300], fontSize: "26px" }} />}
+            description=""
+            icon={<WorkHistory sx={{ color: theme.palette.secondary[300], fontSize: "26px" }} />}
           />
           <StatBox
-            title="Sales Today"
-            value={data && data.todayStats.totalSales}
+            title="Applications Received"
+            value={189}
             increase="+21%"
             description="Since last month"
             icon={
@@ -409,23 +152,23 @@ const Dashboard = () => {
             <OverviewChart view="sales" isDashboard={true} />
           </Box>
           <StatBox
-            title="Monthly Sales"
-            value={data && data.thisMonthStats.totalSales}
+            title="Interviews Lined Up"
+            value={21}
             increase="+5%"
             description="Since last month"
             icon={
-              <PersonAdd
+              <TrendingUp
                 sx={{ color: theme.palette.secondary[300], fontSize: "26px" }}
               />
             }
           />
           <StatBox
-            title="Yearly Sales"
-            value={data && data.yearlySalesTotal}
+            title="Talent Hired"
+            value={5}
             increase="+43%"
             description="Since last month"
             icon={
-              <Traffic
+              <PersonAdd
                 sx={{ color: theme.palette.secondary[300], fontSize: "26px" }}
               />
             }
@@ -476,7 +219,7 @@ const Dashboard = () => {
             borderRadius="0.55rem"
           >
             <Typography variant="h6" sx={{ color: theme.palette.secondary[100] }}>
-              Sales By Category
+             Applications Per Job
             </Typography>
             <BreakdownChart isDashboard={true} />
           </Box>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import FlexBetween from "components/FlexBetween";
 import Header from "components/Header";
+import Leaderboard from "scenes/leaderboard/index";
 import {
   DownloadOutlined,
   Email,
@@ -23,6 +24,7 @@ import Crispjs from "components/Crisp";
 import { useNavigate } from "react-router-dom";
 // Import Gemini and data
 import { GoogleGenerativeAI } from "@google/generative-ai";
+// import Leaderboard from "scenes/leaderboard/index";
 
 const Dashboard2 = () => {
   const theme = useTheme();
@@ -494,6 +496,7 @@ const Dashboard2 = () => {
             backgroundColor={theme.palette.background.alt}
             borderRadius="0.55rem"
           >
+
             <FlexBetween
               sx={{
                 padding: isNonMediumScreens ? "1rem 0.5rem" : "3%",
@@ -527,9 +530,9 @@ const Dashboard2 = () => {
                   fontSize: isNonMediumScreens ? "1rem" : "1.2rem",
                 }}
               >
-                Total Loan Amount:
+                Jainil Shah:
               </Typography>
-              5,00,000
+              8
             </FlexBetween>
 
 
@@ -545,9 +548,9 @@ const Dashboard2 = () => {
                   color: theme.palette.secondary[100],
                   fontSize: isNonMediumScreens ? "1rem" : "1.3rem",
                 }} >
-                Loan Repaid:
+                Darsh Shah
               </Typography>
-              1,25,900
+              12
             </FlexBetween>
 
             <FlexBetween sx={{
@@ -562,9 +565,9 @@ const Dashboard2 = () => {
                   color: theme.palette.secondary[100],
                   fontSize: isNonMediumScreens ? "1rem" : "1.3rem",
                 }} >
-                Amount Left to be Repaid:
+                Vedant Kesharia
               </Typography>
-              3,74,100
+              18
             </FlexBetween>
 
 
@@ -580,9 +583,9 @@ const Dashboard2 = () => {
                   color: theme.palette.secondary[100],
                   fontSize: isNonMediumScreens ? "1rem" : "1.3rem",
                 }} >
-                Rate of Interest:
+                Isha Patade
               </Typography>
-              8%
+              23
             </FlexBetween>
 
             <FlexBetween sx={{
@@ -597,9 +600,9 @@ const Dashboard2 = () => {
                   color: theme.palette.secondary[100],
                   fontSize: isNonMediumScreens ? "1rem" : "1.3rem",
                 }} >
-                Loan Repayment Date:
+                Jinish Shah
               </Typography>
-              15-01-2024
+              28
             </FlexBetween>
 
             <FlexBetween sx={{
@@ -614,11 +617,11 @@ const Dashboard2 = () => {
                   color: theme.palette.secondary[100],
                   fontSize: isNonMediumScreens ? "1rem" : "1.3rem",
                 }} >
-                Next Repayment Date:
+                Parshva Vyas
               </Typography>
-              15-02-2024
-            </FlexBetween>
-
+              40
+            </FlexBetween> 
+{/* <Leaderboard/> */}
           </Box>
           {!isNonMediumScreens && (
             <Box

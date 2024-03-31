@@ -26,14 +26,14 @@ const Candidates = () => {
       headerName: "Email",
       flex: 1,
     },
-    {
-      field: "linkedInUrl",
-      headerName: "LinkedIn Url",
-      flex: 1,
-      renderCell: (params) => {
-        return params.value.replace(/^(\d{3})(\d{3})(\d{4})/, "($1)$2-$3");
-      },
-    },
+    // {
+    //   field: "linkedInUrl",
+    //   headerName: "LinkedIn Url",
+    //   flex: 1,
+    //   renderCell: (params) => {
+    //     return params.value.replace(/^(\d{3})(\d{3})(\d{4})/, "($1)$2-$3");
+    //   },
+    // },
     {
       field: "githubUrl",
       headerName: "Github Url",

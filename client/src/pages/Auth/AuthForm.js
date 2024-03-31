@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./styles.css"; // Import your stylesheet
-
+import Image from '../../assets/login.png';
 import { useSignup } from "../../hooks/useSignup";
 import { useLogin } from "../../hooks/useLogin";
 
@@ -48,7 +48,7 @@ const AuthForm = () => {
       {/* FORM SECTION */}
       <div className="row">
         {/* SIGN UP */}
-        <div className="col align-items-center flex-col sign-up">
+        <div className="col align-items-center flex-col sign-up" style={{backgroundColor: '#A2A9C8'}}>
           <div className="form-wrapper align-items-center">
             <div className="form sign-up">
               <div className="input-group">
@@ -81,9 +81,9 @@ const AuthForm = () => {
                   style={{color:'black'}}
                 />
               </div>
-              <div className="input-group">
+              {/* <div className="input-group">
                 <i className="bx bxs-lock-alt"></i>
-                {/* <input type="password" placeholder="Confirm password" /> */}
+                <input type="password" placeholder="Confirm password" />
                 <select
                   name="role"
                   className="black"
@@ -94,7 +94,7 @@ const AuthForm = () => {
                   <option value="user">User</option>
                   <option value="admin">Lender</option>
                 </select>
-              </div>
+              </div> */}
               <button onClick={handleSignup}>Sign up</button>
 
               <p className="black">
@@ -109,7 +109,7 @@ const AuthForm = () => {
         </div>
         {/* END SIGN UP */}
         {/* SIGN IN */}
-        <div className="col align-items-center flex-col sign-in">
+        <div className="col align-items-center flex-col sign-in" style={{backgroundColor: '#A2A9C8'}}>
           <div className="form-wrapper align-items-center">
             <div className="form sign-in">
               <div className="input-group">
@@ -155,8 +155,8 @@ const AuthForm = () => {
       <div className="row content-row">
         {/* SIGN IN CONTENT */}
         <div className="col align-items-center flex-col">
-          <div className="text sign-in">
-            <h2>Welcome</h2>
+          <div className="text sign-in" style={{marginLeft: '0', marginTop: '20px'}}>
+            <img src={Image} alt="login"/>
           </div>
           <div className="img sign-in">
             {/* ... Your sign-in content ... */}

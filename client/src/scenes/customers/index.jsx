@@ -1,19 +1,20 @@
-import React from "react";
-import { Box, useTheme } from "@mui/material";
+import React, { useState, useEffect } from "react";
+import { Box, useTheme, useMediaQuery } from "@mui/material";
 import { useGetCustomersQuery } from "state/api";
 import Header from "components/Header";
 import { DataGrid } from "@mui/x-data-grid";
 
-const Customers = () => {
+const Candidates = () => {
+  const isNonMediumScreens = useMediaQuery("(max-width: 960px)");
   const theme = useTheme();
-  const { data, isLoading } = useGetCustomersQuery();
-  console.log("data", data);
+  // const { data, isLoading } = useGetCustomersQuery();
+  // console.log("data", data);
 
   const columns = [
     {
       field: "_id",
       headerName: "ID",
-      flex: 1,
+      flex: 0.5,
     },
     {
       field: "name",
@@ -25,19 +26,62 @@ const Customers = () => {
       headerName: "Email",
       flex: 1,
     },
+    // {
+    //   field: "linkedInUrl",
+    //   headerName: "LinkedIn Url",
+    //   flex: 1,
+    // },
     {
-      field: "phoneNumber",
-      headerName: "Phone Number",
-      flex: 0.5,
+      field: "githubUrl",
+      headerName: "Github Url",
+      flex: 1,
       renderCell: (params) => {
         return params.value.replace(/^(\d{3})(\d{3})(\d{4})/, "($1)$2-$3");
       },
     },
+    {
+      field: "rank",
+      headerName: "Rank",
+      flex: 0.5,
+    },
   ];
 
+  const [rows, setRows] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Fetch data here
+    fetchData()
+      .then((data) => {
+        setRows(data);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.error('Error fetching data:', error);
+        setIsLoading(false);
+      });
+  }, []);
+
+  const fetchData = () => {
+    // Replace this with your actual data fetching logic, such as fetching from an API
+    return new Promise((resolve) => {
+      const data = [
+        { _id: 1, name: 'Jainil Shah', email: 'jainil@gmail.com', githubUrl: 'https://github.com/Jainilshah07', rank: 52 },
+        { _id: 2, name: 'Darsh Shah', email: 'darsh@gmail.com' , githubUrl: 'https://github.com/dbs-2012', rank: 68 },
+        { _id: 3, name: 'Vedant Kesaria', email: 'vedant@gmail.com',  githubUrl: 'https://github.com/dbs-2012',rank: 77  },
+        { _id: 4, name: 'Isha Patade', email: 'jane@gmail.com', githubUrl: 'https://github.com/dbs-2012', rank: 55 },
+        { _id: 5, name: 'Jinish Shah', email: 'jane@gmail.com',  githubUrl: 'https://github.com/dbs-2012', rank: 64 },
+        { _id: 6, name: 'Parshva Vyas', email: 'jane@gmail.com',  githubUrl: 'https://github.com/dbs-2012', rank: 80 },
+        // Add more rows as needed
+        
+      ];
+      resolve(data);
+    });
+  };
+
   return (
-    <Box m="1.5rem 2.5rem">
-      <Header title="JOB LISTINGS" subtitle="Apply for jobs" />
+    <Box m={isNonMediumScreens ? "0.5rem 0.5rem" : "1.5rem 2.5rem"}>
+      <Header title="JOB Applications" subtitle="Students applied for jobs" />
       <Box
         mt="40px"
         height="75vh"
@@ -67,14 +111,15 @@ const Customers = () => {
         }}
       >
         <DataGrid
-          loading={isLoading || !data}
+          loading={isLoading}
           getRowId={(row) => row._id}
-          rows={data || []}
+          rows={rows}
           columns={columns}
+          pageSize={10}
         />
       </Box>
     </Box>
-  );
-};
+  )
+}
 
-export default Customers;
+export default Candidates

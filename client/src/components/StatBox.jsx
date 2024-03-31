@@ -2,6 +2,7 @@ import React from "react";
 import { Box, Typography, useTheme } from "@mui/material";
 import FlexBetween from "./FlexBetween";
 
+
 const StatBox = ({ title, value, increase, icon, description }) => {
   const theme = useTheme();
   return (
@@ -40,6 +41,7 @@ const StatBox = ({ title, value, increase, icon, description }) => {
         </Typography>
         <Typography>{description}</Typography>
       </FlexBetween>
+     
     </Box>
   );
 };

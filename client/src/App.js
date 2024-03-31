@@ -4,6 +4,7 @@ import { useMemo } from "react";
 import { useSelector } from "react-redux";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { themeSettings } from "theme";
+import { useEffect, useState } from "react";
 import Layout from "scenes/layout";
 import Dashboard_admin from "./scenes/dashboard/dashboard_admin";
 import Dashboard_user from "./scenes/dashboard/dashboard_farmer";
@@ -21,8 +22,9 @@ import Form from "components/Form";
 import VideoCall from "components/VidoeCall";
 import Editor from "scenes/editor/Editor";
 import Python from "scenes/python/Python"
-
+import { useLocation } from "react-router-dom";
 import AuthForm from "./pages/Auth/AuthForm";
+import ChatAdmin from "components/chatAdmin/index";
 
 import { useAuthContext } from "./hooks/useAuthContext";
 import Payment from "components/Payment";
@@ -44,6 +46,28 @@ function App() {
   const { user } = useAuthContext();
   const mode = useSelector((state) => state.global.mode);
   const theme = useMemo(() => createTheme(themeSettings(mode)), [mode]);
+
+  // const localuser = localStorage.getItem("user");
+
+  // const parsedUser = JSON.parse(localuser);
+  // const email = parsedUser.email;
+  // console.log(parsedUser.email);
+  // const userrole = parsedUser.role;
+
+ 
+  const [userrole, setUserRole] = useState(null);
+  // userrole?location.pathname === "/dashboard"? 
+  useEffect(() => {
+    if (user) {
+      const localUser = localStorage.getItem("user");
+      const parsedUser = JSON.parse(localUser);
+      setUserRole(parsedUser.role);
+    }
+  }, [user]);
+
+  //   :"";
+
+
   return (
     // <div className="app">
     <>
@@ -61,7 +85,15 @@ function App() {
             <Route path="/room/:roomId" element={<RoomPage />} />
             <Route element={<Layout />}>
               {/* <Route path="/" element={<Navigate to="/dashboard" replace />} />  */}
-              <Route path="/dashboard" element={<Dashboard2 />} />
+              {/* <Route path="/dashboard" {userrole=="user"?<Navigate to="/dashboard_user"/> : <Navigate to="/dashboard_admin" />
+              }/> */}
+              {userrole === "user" ? (
+    <Route path="/dashboard" element={<Navigate to="/dashboard_user" />} />
+  ) : (
+    <Route path="/dashboard" element={<Navigate to="/dashboard_admin" />} />
+  )}
+              <Route path="/dashboard_user" element={<Dashboard2 />} />
+
               <Route path="/dashboard_admin" element={<Dashboard_admin />} />
               {/* <Route path="/dashboard_user" element={<Dashboard_user />} /> */}
               <Route path="/payment" element={<Payment />} />
@@ -85,6 +117,7 @@ function App() {
               <Route path="/editor" element={<Editor />} />
               <Route path="/python" element={<Python />} />
               <Route path="/candidates" element={<Candidates />} />
+              <Route path="/chatadmin" element={<ChatAdmin />} />
             </Route>
           </Routes>
         </ThemeProvider>
