@@ -50,6 +50,10 @@ const navItems = [
     icon: <WorkOutline />,
   },
   {
+    text: "Jobs",
+    icon: <WorkOutline />,
+  },
+  {
     text: "Discuss",
     icon: <Groups />,
   },

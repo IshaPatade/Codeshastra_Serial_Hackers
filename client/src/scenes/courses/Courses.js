@@ -8,7 +8,7 @@ const Courses = () => {
   
   const handleClick = () => {
    
-    navigate('/editor');
+    navigate('/python');
   };
   const buttonStyles = {
     base: {

@@ -20,6 +20,7 @@ import Performance from "scenes/performance";
 import Form from "components/Form";
 import VideoCall from "components/VidoeCall";
 import Editor from "scenes/editor/Editor";
+import Python from "scenes/python/Python"
 
 import AuthForm from "./pages/Auth/AuthForm";
 
@@ -35,6 +36,9 @@ import Calendar from "components/Calendar";
 import Jobs from "scenes/jobs";
 import Courses from "scenes/courses/Courses";
 import { EditRoadOutlined } from "@mui/icons-material";
+import Apply from "scenes/apply/Apply";
+import ApplyDetails from "scenes/apply/ApplyDetails";
+
 function App() {
   const { user } = useAuthContext();
   const mode = useSelector((state) => state.global.mode);
@@ -62,12 +66,14 @@ function App() {
               <Route path="/payment" element={<Payment />} />
               <Route path="/farmerform" element={<FarmerForm />} />
               <Route path="/products" element={<Products />} />
-              <Route path="/apply" element={<Jobs />} />
+              <Route path="/jobs" element={<Jobs />} />
+              <Route path="/apply" element={<Apply />} />
+              <Route path="/applydetails/:id" element={<ApplyDetails />} />
               <Route path="/calendar" element={<Calendar />} />
               <Route path="/discuss" element={<Transactions />} />
               <Route path="/resume" element={<Geography />} />
               <Route path="/overview" element={<Overview />} />
-              <Route path="/code" element={<Daily />} />
+              <Route path="/code" element={<Editor />} />
               <Route path="/monthly" element={<Monthly />} />
               <Route path="/breakdown" element={<Breakdown />} />
               <Route path="/admin" element={<Admin />} />
@@ -76,6 +82,7 @@ function App() {
               <Route path="/news" element={<News />} />
               <Route path="/courses" element={<Courses />} />
               <Route path="/editor" element={<Editor />} />
+              <Route path="/python" element={<Python />} />
             </Route>
           </Routes>
         </ThemeProvider>

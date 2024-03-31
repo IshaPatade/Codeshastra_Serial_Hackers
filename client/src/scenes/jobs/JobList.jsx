@@ -5,10 +5,11 @@ const JobList = () => {
     const [jobs, setJobs] = useState([]);
   
     useEffect(() => {
-        const apiKey = '0bc3a76d-c24b-47ab-8fdc-d17665c2c185';
+        // const apiKey = '0bc3a76d-c24b-47ab-8fdc-d17665c2c185';
         const headers = {
             'Content-Type': 'application/json',
-            'api-key': '0bc3a76d-c24b-47ab-8fdc-d17665c2c185'
+            // 'api-key': '0bc3a76d-c24b-47ab-8fdc-d17665c2c185'
+            'api-key': '557dca7b-7a8b-4fee-87ff-6dfc0fc07bef'
         };
         const LIMIT = 30;
         const urls = `https://api.crackeddevs.com/v1/get-jobs?limit=${LIMIT}`
@@ -24,15 +25,18 @@ const JobList = () => {
         })
         .then(data => {
             if (Array.isArray(data)) {
+                console.log(jobs);
                 const filteredJobs = data.filter(job => job.company && job.logo_url);
+                console.log(filteredJobs.length); // Add this line to check the number of filtered jobs
                 setJobs(filteredJobs);
             } else {
                 console.error('Data is not an array:', data);
             }
-        })
+        })        
         .catch(error => console.error('Error fetching data: ', error));
     }, []);
-    
+    console.log(jobs);
+
   
     return (
       <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around' }}>

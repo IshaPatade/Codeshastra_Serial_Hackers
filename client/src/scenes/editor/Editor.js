@@ -1,9 +1,9 @@
 import { useState } from 'react'; 
 import './editor.css'; 
 import Editor from "@monaco-editor/react"; 
-//import Navbar from './Components/Navbar'; 
+import Navbar from './Navbar'; 
 import Axios from 'axios'; 
-//import spinner from './spinner.svg'; 
+import spinner from './spinner.svg'; 
 
 function App() { 
 
@@ -41,7 +41,7 @@ function App() {
 		} 
 
 		// Post request to compile endpoint 
-		Axios.post(`http://localhost:8000/compile`, { 
+		Axios.post(`http://localhost:4000/compile`, { 
 			code: userCode, 
 			language: userLang, 
 			input: userInput 
@@ -58,7 +58,7 @@ function App() {
 	} 
 
 	return ( 
-		<div className="App"> 
+		<div className="ppp"> 
 			{/* <Navbar 
 				userLang={userLang} setUserLang={setUserLang} 
 				userTheme={userTheme} setUserTheme={setUserTheme} 
