@@ -212,8 +212,8 @@ const Navbar2 = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
                 <DialogTitle id="dialog-title">New Notifications</DialogTitle>
                 <DialogContent>
                     {/* Display your notifications here */}
-                    <Typography>Payment Due on 15-02-24</Typography>
-                    <Typography>Amount To Be Paid: 1000Rs</Typography>
+                    <Typography>Reminder!</Typography>
+                    <Typography>You have an interview tomorrow</Typography>
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleDialogClose}>Close</Button>

@@ -304,7 +304,7 @@ const Sidebar = ({
               })}
             </List>
             <List>
-              <ListItem key="Pay" disablePadding>
+              {/* <ListItem key="Pay" disablePadding>
                 <ListItemButton
                   sx={{
                     color: theme.palette.secondary[50],
@@ -319,11 +319,11 @@ const Sidebar = ({
                   >
                     <CurrencyRupeeIcon />
                   </ListItemIcon>
-                  {/* {isNonMobile && <ListItemText primary="Pay" />}  */}
+
                   <ListItemText primary="Pay" />
-                  {/* <ChevronRightOutlined sx={{ ml: "auto" }} /> */}
+
                 </ListItemButton>
-              </ListItem>
+              </ListItem> */}
             </List>
           </Box>
 

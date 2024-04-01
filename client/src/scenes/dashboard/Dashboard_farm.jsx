@@ -516,7 +516,7 @@ const Dashboard2 = () => {
               
             </FlexBetween>
 
-            <FlexBetween
+            {/* <FlexBetween
               sx={{
                 padding: isNonMediumScreens ? "1rem 0.5rem" : "3%",
                 color: theme.palette.secondary[100],
@@ -620,8 +620,8 @@ const Dashboard2 = () => {
                 Parshva Vyas
               </Typography>
               40
-            </FlexBetween> 
-{/* <Leaderboard/> */}
+            </FlexBetween>  */}
+<Leaderboard/>
           </Box>
           {!isNonMediumScreens && (
             <Box
@@ -631,10 +631,13 @@ const Dashboard2 = () => {
               p={isNonMediumScreens ? "0.5rem" : "1rem"}
               borderRadius="0.55rem"
             >
-              <Typography variant="h6" sx={{ color: theme.palette.secondary[100] }}>
-                Sales By Category
+              <Typography sx={{ color: theme.palette.secondary[100],  fontSize: '1.5rem', margin: '1.5rem' }}>
+                Daily Streak
               </Typography>
+              <Typography sx={{width: '100%', margin: '1.5rem'}}>
+
               <BreakdownChart isDashboard={true} />
+              </Typography>
             </Box>
           )}
         </Box>

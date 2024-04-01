@@ -8,8 +8,8 @@ const JobList = () => {
         // const apiKey = '0bc3a76d-c24b-47ab-8fdc-d17665c2c185';
         const headers = {
             'Content-Type': 'application/json',
-            // 'api-key': '0bc3a76d-c24b-47ab-8fdc-d17665c2c185'
-            'api-key': '557dca7b-7a8b-4fee-87ff-6dfc0fc07bef'
+            'api-key': '0bc3a76d-c24b-47ab-8fdc-d17665c2c185'
+            // 'api-key': '557dca7b-7a8b-4fee-87ff-6dfc0fc07bef'
         };
         const LIMIT = 30;
         const urls = `https://api.crackeddevs.com/v1/get-jobs?limit=${LIMIT}`

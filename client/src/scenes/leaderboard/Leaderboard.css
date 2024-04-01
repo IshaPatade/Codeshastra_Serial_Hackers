@@ -1,13 +1,16 @@
 .leaderboard-container {
-    margin: 20px;
+    margin: auto 20px;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
   }
   
   .leaderboard-table {
-    width: 50%;
+    width: 100%;
     border-collapse: collapse;
+    font-family: 'Merriweather', serif;
+    font-size: 1.2rem;
+    font-weight: 500;
   }
   
   .leaderboard-table th,
@@ -17,13 +20,7 @@
     text-align: left;
   }
   
-  .leaderboard-table th {
-    background-color: #f2f2f2;
-  }
   
-  .leaderboard-table tr:nth-child(even) {
-    background-color: #f2f2f2;
-  }
   
   .leaderboard-table tr:hover {
     background-color: #ddd;

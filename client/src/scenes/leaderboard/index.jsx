@@ -13,7 +13,6 @@ const Leaderboard = () => {
 
   return (
     <div className="leaderboard-container">
-      <h2>Leaderboard</h2>
       <table className="leaderboard-table">
         <thead>
           <tr>

@@ -1,3 +1,54 @@
+import React, { useState } from 'react';
+import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
+import './Calendar.css';
+
+const HighlightedCalendar = () => {
+  const [date, setDate] = useState(new Date());
+  const [highlightedDates, setHighlightedDates] = useState([
+    // Add your dates here that you want to highlight (in Date object format)
+    new Date(2024, 2, 10),
+    new Date(2024, 2, 15),
+    new Date(2024, 2, 20),
+  ]);
+
+  const tileContent = ({ date }) => {
+    // Check if the current date is in the highlightedDates array
+    const isHighlighted = highlightedDates.find(
+      (highlightedDate) =>
+        highlightedDate.getDate() === date.getDate() &&
+        highlightedDate.getMonth() === date.getMonth() &&
+        highlightedDate.getFullYear() === date.getFullYear()
+    );
+
+    // If the date is highlighted, render a green dot
+    return isHighlighted ? <div style={{ backgroundColor: 'green', width: '100%', height: '100%' }}></div> : null;
+  };
+
+  const onChange = (date) => {
+    setDate(date);
+  };
+
+  return (
+    <div style={{ color: 'black', width: '100%', textAlign: 'center' }}>
+      {/* Apply custom class for calendar styling outside the JSX block */}
+      {/* Note: JSX does not support block comments within attributes */}
+      <Calendar
+        onChange={onChange}
+        value={date}
+        tileContent={tileContent}
+        calendarClassName="black-calendar"
+        // style={{ width: '100%', margin: '0 auto' }}
+      />
+    </div>
+  );
+};
+
+export default HighlightedCalendar;
+
+
+
+
 // import React from 'react'
 // import StreakCalendar from './Calendar2'
 
@@ -57,120 +108,120 @@
 
 // export default BreakdownChart;
 
-import React, { useMemo, useState } from "react";
-import { ResponsivePie } from "@nivo/pie";
-import { useTheme, MenuItem, Select } from "@mui/material";
-import { data } from "./monthly2";
+// import React, { useMemo, useState } from "react";
+// import { ResponsivePie } from "@nivo/pie";
+// import { useTheme, MenuItem, Select } from "@mui/material";
+// import { data } from "./monthly2";
 
-const BreakdownChart = ({ data2 }) => {
-  const theme = useTheme();
-  const [selectedYear, setSelectedYear] = useState(2015); // Example: Initial year
+// const BreakdownChart = ({ data2 }) => {
+//   const theme = useTheme();
+//   const [selectedYear, setSelectedYear] = useState(2015); // Example: Initial year
 
-  const handleYearChange = (event) => {
-    setSelectedYear(event.target.value);
-  };
+//   const handleYearChange = (event) => {
+//     setSelectedYear(event.target.value);
+//   };
 
-  const filteredData = useMemo(() => {
-    if (!data) return [];
+//   const filteredData = useMemo(() => {
+//     if (!data) return [];
 
-    // Filter data based on selected year
-    console.log("Selected year:", selectedYear);
-    return data.filter((item) => item.Year === selectedYear);
-  }, [data, selectedYear]);
+//     // Filter data based on selected year
+//     console.log("Selected year:", selectedYear);
+//     return data.filter((item) => item.Year === selectedYear);
+//   }, [data, selectedYear]);
 
-  const calculateTotalArrivals = (commodity) => {
-    return filteredData.reduce((total, item) => {
-      if (item.Commodity === commodity) {
-        total += item.arrivals_in_qtl;
-      }
-      return total%20;
-    }, 0);
-  };
+//   const calculateTotalArrivals = (commodity) => {
+//     return filteredData.reduce((total, item) => {
+//       if (item.Commodity === commodity) {
+//         total += item.arrivals_in_qtl;
+//       }
+//       return total%20;
+//     }, 0);
+//   };
 
-  const pieChartData = useMemo(() => {
-    if (!filteredData) return [];
+//   const pieChartData = useMemo(() => {
+//     if (!filteredData) return [];
 
-    const commodities = [
-      "Business",
-      "Developer",
-      "Data Analyst",
-      "Data Scientist",
-      "Software Engineer",
+//     const commodities = [
+//       "Business",
+//       "Developer",
+//       "Data Analyst",
+//       "Data Scientist",
+//       "Software Engineer",
       
-    ];
+//     ];
 
-    const pieData = commodities.map((commodity) => ({
-      id: commodity,
-      label: commodity,
-      value: calculateTotalArrivals(commodity),
-    }));
+//     const pieData = commodities.map((commodity) => ({
+//       id: commodity,
+//       label: commodity,
+//       value: calculateTotalArrivals(commodity),
+//     }));
 
-    return pieData;
-  }, [filteredData]);
+//     return pieData;
+//   }, [filteredData]);
 
-  console.log("Pie chart data:", pieChartData);
+//   console.log("Pie chart data:", pieChartData);
 
-  return (
-    <>
-      {/* <Select
-        value={selectedYear}
-        onChange={handleYearChange}
-        displayEmpty
-        inputProps={{ "aria-label": "Select Year" }}
-      >
-        <MenuItem value={2015}>2015</MenuItem>
-        <MenuItem value={2016}>2016</MenuItem>
+//   return (
+//     <>
+//       {/* <Select
+//         value={selectedYear}
+//         onChange={handleYearChange}
+//         displayEmpty
+//         inputProps={{ "aria-label": "Select Year" }}
+//       >
+//         <MenuItem value={2015}>2015</MenuItem>
+//         <MenuItem value={2016}>2016</MenuItem>
 
-        {/* Add other years as needed */}
-      {/* </Select> */} 
-      {/* <ResponsivePie
-        data={pieChartData}
-        margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
-        innerRadius={0.5}
-        padAngle={0.7}
-        cornerRadius={3}
-        colors={{ scheme: "category10" }}
-        borderWidth={1}
-        borderColor={{ from: "color", modifiers: [["darker", 0.2]] }}
-        radialLabelsSkipAngle={10}
-        radialLabelsTextXOffset={6}
-        radialLabelsTextColor="#333333"
-        radialLabelsLinkOffset={0}
-        radialLabelsLinkDiagonalLength={16}
-        radialLabelsLinkHorizontalLength={24}
-        radialLabelsLinkStrokeWidth={1}
-        radialLabelsLinkColor={{ from: "color" }}
-        sliceLabelsSkipAngle={10}
-        sliceLabelsTextColor="#333333"
-      /> */}
+//         {/* Add other years as needed */}
+//       {/* </Select> */} 
+//       {/* <ResponsivePie
+//         data={pieChartData}
+//         margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
+//         innerRadius={0.5}
+//         padAngle={0.7}
+//         cornerRadius={3}
+//         colors={{ scheme: "category10" }}
+//         borderWidth={1}
+//         borderColor={{ from: "color", modifiers: [["darker", 0.2]] }}
+//         radialLabelsSkipAngle={10}
+//         radialLabelsTextXOffset={6}
+//         radialLabelsTextColor="#333333"
+//         radialLabelsLinkOffset={0}
+//         radialLabelsLinkDiagonalLength={16}
+//         radialLabelsLinkHorizontalLength={24}
+//         radialLabelsLinkStrokeWidth={1}
+//         radialLabelsLinkColor={{ from: "color" }}
+//         sliceLabelsSkipAngle={10}
+//         sliceLabelsTextColor="#333333"
+//       /> */}
 
-        <ResponsivePie
-          data={pieChartData}
-          width={350} // Adjust width as needed
-          height={400} // Adjust height as needed
-          margin={{ top: 20, right: 80, bottom: 100, left: 80 }}
-          innerRadius={0.5}
-          padAngle={0.7}
-          cornerRadius={3}
-          colors={{ scheme: "category10" }}
-          borderWidth={1}
-          borderColor={{ from: "color", modifiers: [["darker", 0.2]] }}
-          radialLabelsSkipAngle={10}
-          radialLabelsTextXOffset={6}
-          radialLabelsTextColor="#333333"
-          radialLabelsLinkOffset={0}
-          radialLabelsLinkDiagonalLength={16}
-          radialLabelsLinkHorizontalLength={24}
-          radialLabelsLinkStrokeWidth={1}
-          radialLabelsLinkColor={{ from: "color" }}
-          sliceLabelsSkipAngle={10}
-          sliceLabelsTextColor="#333333"
-        />
-    </>
-  );
-};
+//         <ResponsivePie
+//           data={pieChartData}
+//           width={350} // Adjust width as needed
+//           height={400} // Adjust height as needed
+//           margin={{ top: 20, right: 80, bottom: 100, left: 80 }}
+//           innerRadius={0.5}
+//           padAngle={0.7}
+//           cornerRadius={3}
+//           colors={{ scheme: "category10" }}
+//           borderWidth={1}
+//           borderColor={{ from: "color", modifiers: [["darker", 0.2]] }}
+//           radialLabelsSkipAngle={10}
+//           radialLabelsTextXOffset={6}
+//           radialLabelsTextColor="#333333"
+//           radialLabelsLinkOffset={0}
+//           radialLabelsLinkDiagonalLength={16}
+//           radialLabelsLinkHorizontalLength={24}
+//           radialLabelsLinkStrokeWidth={1}
+//           radialLabelsLinkColor={{ from: "color" }}
+//           sliceLabelsSkipAngle={10}
+//           sliceLabelsTextColor="#333333"
+//         />
+//     </>
+//   );
+// };
 
-export default BreakdownChart;
+// export default BreakdownChart;
 
 // import React from "react";
 // import { ResponsivePie } from "@nivo/pie";
