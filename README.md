@@ -1,3 +1,1 @@
-# Domain Winner - Fintech for SPIT CSI Hackathon 2024
-
-A website and app for Indian farmers to get loans and for lenders to assess risk of applied loans, view borrower history, approve loans and send money.
+Application aimed at facilitating seamless connections between job seekers and employers, encompassing essential features such as job posting, streamlined application processes, and a built-in code editor for technical assessments.
